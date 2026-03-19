@@ -6,7 +6,7 @@ export class Document {
   }
 
   static create(raw: string): Document {
-    const digits = raw.replace(/\D/g, '');
+    const digits = raw.replace(/\D/g, "");
 
     if (digits.length === 11) {
       if (!Document.isValidCpf(digits)) {
@@ -22,7 +22,9 @@ export class Document {
       return new Document(digits);
     }
 
-    throw new Error(`Documento inválido: deve ser CPF (11 dígitos) ou CNPJ (14 dígitos). Recebido: ${raw}`);
+    throw new Error(
+      `Documento inválido: deve ser CPF (11 dígitos) ou CNPJ (14 dígitos). Recebido: ${raw}`,
+    );
   }
 
   get value(): string {
@@ -39,9 +41,12 @@ export class Document {
 
   formatted(): string {
     if (this.isCpf()) {
-      return this._value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+      return this._value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
     }
-    return this._value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
+    return this._value.replace(
+      /(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
+      "$1.$2.$3/$4-$5",
+    );
   }
 
   equals(other: Document): boolean {
@@ -52,7 +57,9 @@ export class Document {
     if (/^(\d)\1+$/.test(digits)) return false;
 
     const calcDigit = (slice: string, weights: number[]): number => {
-      const sum = slice.split('').reduce((acc, d, i) => acc + Number(d) * weights[i], 0);
+      const sum = slice
+        .split("")
+        .reduce((acc, d, i) => acc + Number(d) * weights[i], 0);
       const remainder = sum % 11;
       return remainder < 2 ? 0 : 11 - remainder;
     };
@@ -70,7 +77,9 @@ export class Document {
     if (/^(\d)\1+$/.test(digits)) return false;
 
     const calcDigit = (slice: string, weights: number[]): number => {
-      const sum = slice.split('').reduce((acc, d, i) => acc + Number(d) * weights[i], 0);
+      const sum = slice
+        .split("")
+        .reduce((acc, d, i) => acc + Number(d) * weights[i], 0);
       const remainder = sum % 11;
       return remainder < 2 ? 0 : 11 - remainder;
     };

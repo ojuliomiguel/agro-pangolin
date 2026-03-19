@@ -1,4 +1,4 @@
-import { Area } from '../value-objects/area';
+import { Area } from "../value-objects/area";
 
 interface AreaProps {
   totalArea: Area;
@@ -12,8 +12,8 @@ export class FarmAreaConsistencyPolicy {
     if (!usedArea.isLessThanOrEqualTo(props.totalArea)) {
       throw new Error(
         `Inconsistência de área: a soma da área agricultável (${props.agriculturalArea.value} ha) ` +
-        `e área de vegetação (${props.vegetationArea.value} ha) = ${usedArea.value} ha ` +
-        `ultrapassa a área total da fazenda (${props.totalArea.value} ha).`,
+          `e área de vegetação (${props.vegetationArea.value} ha) = ${usedArea.value} ha ` +
+          `ultrapassa a área total da fazenda (${props.totalArea.value} ha).`,
       );
     }
   }

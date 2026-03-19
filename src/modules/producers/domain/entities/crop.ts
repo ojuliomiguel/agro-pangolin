@@ -1,4 +1,4 @@
-import { CropName } from '../value-objects/crop-name';
+import { CropName } from "../value-objects/crop-name";
 
 export class Crop {
   constructor(

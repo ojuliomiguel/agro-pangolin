@@ -1,5 +1,5 @@
-import { HarvestYear } from '../value-objects/harvest-year';
-import { Crop } from './crop';
+import { HarvestYear } from "../value-objects/harvest-year";
+import { Crop } from "./crop";
 
 export class Harvest {
   constructor(

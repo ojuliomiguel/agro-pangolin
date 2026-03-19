@@ -1,7 +1,7 @@
-import { CreateProducerUseCase } from './create-producer.use-case';
-import type { ProducerRepository } from '../../../domain/ports/producer-repository';
-import type { DocumentValidator } from '../../../domain/services/document-validator';
-import { makeProducer, VALID_CPF } from '../test-helpers/domain.fixtures';
+import { CreateProducerUseCase } from "./create-producer.use-case";
+import type { ProducerRepository } from "../../../domain/ports/producer-repository";
+import type { DocumentValidator } from "../../../domain/services/document-validator";
+import { makeProducer, VALID_CPF } from "../test-helpers/domain.fixtures";
 
 const mockRepository: jest.Mocked<ProducerRepository> = {
   create: jest.fn(),
@@ -16,26 +16,26 @@ const mockValidator: jest.Mocked<DocumentValidator> = {
 
 const baseInput = {
   document: VALID_CPF,
-  name: 'João da Silva',
+  name: "João da Silva",
   farms: [
     {
-      name: 'Fazenda Boa Vista',
-      city: 'Ribeirão Preto',
-      state: 'SP',
+      name: "Fazenda Boa Vista",
+      city: "Ribeirão Preto",
+      state: "SP",
       totalArea: 100,
       agriculturalArea: 60,
       vegetationArea: 30,
       harvests: [
         {
-          year: '2024/2025',
-          crops: [{ name: 'Soja' }],
+          year: "2024/2025",
+          crops: [{ name: "Soja" }],
         },
       ],
     },
   ],
 };
 
-describe('CreateProducerUseCase', () => {
+describe("CreateProducerUseCase", () => {
   let useCase: CreateProducerUseCase;
 
   beforeEach(() => {
@@ -43,7 +43,7 @@ describe('CreateProducerUseCase', () => {
     useCase = new CreateProducerUseCase(mockRepository, mockValidator);
   });
 
-  it('deve criar produtor com sucesso', async () => {
+  it("deve criar produtor com sucesso", async () => {
     const producer = makeProducer();
     mockValidator.validate.mockReturnValue(true);
     mockRepository.create.mockResolvedValue(producer);
@@ -52,29 +52,29 @@ describe('CreateProducerUseCase', () => {
 
     expect(mockValidator.validate).toHaveBeenCalledWith(VALID_CPF);
     expect(mockRepository.create).toHaveBeenCalledTimes(1);
-    expect(result.name).toBe('João da Silva');
+    expect(result.name).toBe("João da Silva");
     expect(result.farms).toHaveLength(1);
   });
 
-  it('deve lançar erro quando documento é inválido', async () => {
+  it("deve lançar erro quando documento é inválido", async () => {
     mockValidator.validate.mockReturnValue(false);
 
     await expect(
-      useCase.execute({ ...baseInput, document: '000.000.000-00' }),
-    ).rejects.toThrow('Documento inválido');
+      useCase.execute({ ...baseInput, document: "000.000.000-00" }),
+    ).rejects.toThrow("Documento inválido");
 
     expect(mockRepository.create).not.toHaveBeenCalled();
   });
 
-  it('deve lançar erro quando nome é vazio', async () => {
+  it("deve lançar erro quando nome é vazio", async () => {
     mockValidator.validate.mockReturnValue(true);
 
-    await expect(
-      useCase.execute({ ...baseInput, name: '' }),
-    ).rejects.toThrow('nome do produtor é obrigatório');
+    await expect(useCase.execute({ ...baseInput, name: "" })).rejects.toThrow(
+      "nome do produtor é obrigatório",
+    );
   });
 
-  it('deve lançar erro quando área agrícola + vegetação ultrapassam área total', async () => {
+  it("deve lançar erro quando área agrícola + vegetação ultrapassam área total", async () => {
     mockValidator.validate.mockReturnValue(true);
 
     const input = {
@@ -93,12 +93,16 @@ describe('CreateProducerUseCase', () => {
     expect(mockRepository.create).not.toHaveBeenCalled();
   });
 
-  it('deve criar produtor sem farms', async () => {
+  it("deve criar produtor sem farms", async () => {
     const producerSemFarms = makeProducer();
     mockValidator.validate.mockReturnValue(true);
     mockRepository.create.mockResolvedValue(producerSemFarms);
 
-    const result = await useCase.execute({ document: VALID_CPF, name: 'Maria', farms: [] });
+    const result = await useCase.execute({
+      document: VALID_CPF,
+      name: "Maria",
+      farms: [],
+    });
 
     expect(mockRepository.create).toHaveBeenCalledTimes(1);
     expect(result).toBeDefined();

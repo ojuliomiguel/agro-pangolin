@@ -1,9 +1,9 @@
 export const VALID_CROP_NAMES = [
-  'Soja',
-  'Milho',
-  'Café',
-  'Cana de Açúcar',
-  'Algodão',
+  "Soja",
+  "Milho",
+  "Café",
+  "Cana de Açúcar",
+  "Algodão",
 ] as const;
 
 export type CropNameValue = (typeof VALID_CROP_NAMES)[number];
@@ -18,11 +18,11 @@ export class CropName {
   static create(value: string): CropName {
     const match = VALID_CROP_NAMES.find(
       (name) => name.toLowerCase() === value.trim().toLowerCase(),
-    ) as CropNameValue | undefined;
+    );
 
     if (!match) {
       throw new Error(
-        `Cultura inválida: "${value}". Valores aceitos: ${VALID_CROP_NAMES.join(', ')}.`,
+        `Cultura inválida: "${value}". Valores aceitos: ${VALID_CROP_NAMES.join(", ")}.`,
       );
     }
 

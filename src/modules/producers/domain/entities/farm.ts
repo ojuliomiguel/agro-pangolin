@@ -1,7 +1,7 @@
-import { Area } from '../value-objects/area';
-import { StateCode } from '../value-objects/state-code';
-import { FarmAreaConsistencyPolicy } from '../policies/farm-area-consistency.policy';
-import { Harvest } from './harvest';
+import { Area } from "../value-objects/area";
+import { StateCode } from "../value-objects/state-code";
+import { FarmAreaConsistencyPolicy } from "../policies/farm-area-consistency.policy";
+import { Harvest } from "./harvest";
 
 export interface FarmProps {
   id: string;

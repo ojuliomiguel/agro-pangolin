@@ -7,7 +7,9 @@ export class Area {
 
   static create(value: number): Area {
     if (value < 0) {
-      throw new Error(`Área inválida: o valor em hectares não pode ser negativo. Recebido: ${value}`);
+      throw new Error(
+        `Área inválida: o valor em hectares não pode ser negativo. Recebido: ${value}`,
+      );
     }
     return new Area(value);
   }

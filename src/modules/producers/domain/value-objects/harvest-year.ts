@@ -14,7 +14,7 @@ export class HarvestYear {
       );
     }
 
-    const [startYear, endYear] = value.split('/').map(Number);
+    const [startYear, endYear] = value.split("/").map(Number);
     if (endYear <= startYear) {
       throw new Error(
         `Ano de safra inválido: o ano final (${endYear}) deve ser maior que o inicial (${startYear}).`,

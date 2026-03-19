@@ -1,5 +1,5 @@
-import { Document } from '../value-objects/document';
-import { Farm } from './farm';
+import { Document } from "../value-objects/document";
+import { Farm } from "./farm";
 
 export interface ProducerProps {
   id: string;
@@ -16,7 +16,7 @@ export class Producer {
 
   constructor(props: ProducerProps) {
     if (!props.name || props.name.trim().length === 0) {
-      throw new Error('O nome do produtor é obrigatório.');
+      throw new Error("O nome do produtor é obrigatório.");
     }
 
     this.id = props.id;

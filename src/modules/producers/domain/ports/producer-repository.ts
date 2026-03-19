@@ -1,4 +1,4 @@
-import { Producer } from '../entities/producer';
+import { Producer } from "../entities/producer";
 
 export interface ListProducersFilter {
   page?: number;

@@ -1,7 +1,7 @@
-import { Producer } from '../domain/entities/producer';
-import { Farm } from '../domain/entities/farm';
-import { Harvest } from '../domain/entities/harvest';
-import { Crop } from '../domain/entities/crop';
+import { Producer } from "../domain/entities/producer";
+import { Farm } from "../domain/entities/farm";
+import { Harvest } from "../domain/entities/harvest";
+import { Crop } from "../domain/entities/crop";
 
 export interface CropOutput {
   id: string;

@@ -1,8 +1,8 @@
-import { Inject } from '@nestjs/common';
-import { UseCase } from '../../../../../shared/use-case.interface';
-import { ProducerOutput, ProducerMapper } from '../producer.mapper';
-import { ProducerReadRepository } from '../../../domain/ports/producer-read-repository';
-import { PRODUCER_READ_REPOSITORY } from '../../../infrastructure/providers/tokens';
+import { Inject } from "@nestjs/common";
+import { UseCase } from "../../../../../shared/use-case.interface";
+import { ProducerOutput, ProducerMapper } from "../producer.mapper";
+import { ProducerReadRepository } from "../../../domain/ports/producer-read-repository";
+import { PRODUCER_READ_REPOSITORY } from "../../../infrastructure/providers/tokens";
 
 export interface ListProducersInput {
   page?: number;
@@ -16,9 +16,10 @@ export interface ListProducersOutput {
   limit: number;
 }
 
-export class ListProducersUseCase
-  implements UseCase<ListProducersInput, ListProducersOutput>
-{
+export class ListProducersUseCase implements UseCase<
+  ListProducersInput,
+  ListProducersOutput
+> {
   constructor(
     @Inject(PRODUCER_READ_REPOSITORY)
     private readonly producerReadRepository: ProducerReadRepository,
