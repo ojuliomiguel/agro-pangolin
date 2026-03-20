@@ -1,12 +1,13 @@
-import { Inject, NotFoundException } from "@nestjs/common";
+import { Inject, Injectable, NotFoundException } from "@nestjs/common";
 import { UseCase } from "../../../../../shared/use-case.interface";
-import { ProducerRepository } from "../../../domain/ports/producer-repository";
+import type { ProducerRepository } from "../../../domain/ports/producer-repository";
 import { PRODUCER_REPOSITORY } from "../../../infrastructure/providers/tokens";
 
 export interface DeleteProducerInput {
   id: string;
 }
 
+@Injectable()
 export class DeleteProducerUseCase implements UseCase<
   DeleteProducerInput,
   void

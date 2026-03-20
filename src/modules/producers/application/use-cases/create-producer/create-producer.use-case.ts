@@ -1,9 +1,9 @@
-import { Inject } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import { UseCase } from "../../../../../shared/use-case.interface";
 import { ProducerOutput, ProducerMapper } from "../producer.mapper";
-import { FarmInput } from "../shared-inputs.dto";
-import { ProducerRepository } from "../../../domain/ports/producer-repository";
-import { DocumentValidator } from "../../../domain/services/document-validator";
+import type { FarmInput } from "../shared-inputs.dto";
+import type { ProducerRepository } from "../../../domain/ports/producer-repository";
+import type { DocumentValidator } from "../../../domain/services/document-validator";
 import {
   PRODUCER_REPOSITORY,
   DOCUMENT_VALIDATOR,
@@ -27,6 +27,7 @@ export interface CreateProducerInput {
 
 export type CreateProducerOutput = ProducerOutput;
 
+@Injectable()
 export class CreateProducerUseCase implements UseCase<
   CreateProducerInput,
   CreateProducerOutput

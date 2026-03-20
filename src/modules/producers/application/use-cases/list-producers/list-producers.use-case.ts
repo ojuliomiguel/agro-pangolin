@@ -1,7 +1,7 @@
-import { Inject } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import { UseCase } from "../../../../../shared/use-case.interface";
 import { ProducerOutput, ProducerMapper } from "../producer.mapper";
-import { ProducerReadRepository } from "../../../domain/ports/producer-read-repository";
+import type { ProducerReadRepository } from "../../../domain/ports/producer-read-repository";
 import { PRODUCER_READ_REPOSITORY } from "../../../infrastructure/providers/tokens";
 
 export interface ListProducersInput {
@@ -16,6 +16,7 @@ export interface ListProducersOutput {
   limit: number;
 }
 
+@Injectable()
 export class ListProducersUseCase implements UseCase<
   ListProducersInput,
   ListProducersOutput

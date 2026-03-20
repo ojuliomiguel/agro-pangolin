@@ -1,7 +1,7 @@
-import { Inject, NotFoundException } from "@nestjs/common";
+import { Inject, Injectable, NotFoundException } from "@nestjs/common";
 import { UseCase } from "../../../../../shared/use-case.interface";
 import { ProducerOutput, ProducerMapper } from "../producer.mapper";
-import { ProducerRepository } from "../../../domain/ports/producer-repository";
+import type { ProducerRepository } from "../../../domain/ports/producer-repository";
 import { PRODUCER_REPOSITORY } from "../../../infrastructure/providers/tokens";
 
 export interface GetProducerInput {
@@ -10,6 +10,7 @@ export interface GetProducerInput {
 
 export type GetProducerOutput = ProducerOutput;
 
+@Injectable()
 export class GetProducerUseCase implements UseCase<
   GetProducerInput,
   GetProducerOutput

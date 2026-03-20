@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
+import { InjectEntityManager, InjectRepository } from "@nestjs/typeorm";
 import { Repository, EntityManager } from "typeorm";
 import { ProducerRepository } from "../../../../domain/ports/producer-repository";
 import { Producer } from "../../../../domain/entities/producer";
@@ -12,6 +12,7 @@ export class ProducerTypeOrmRepository implements ProducerRepository {
   constructor(
     @InjectRepository(ProducerEntity)
     private readonly repository: Repository<ProducerEntity>,
+    @InjectEntityManager()
     private readonly entityManager: EntityManager,
   ) {}
 

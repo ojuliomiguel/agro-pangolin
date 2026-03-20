@@ -1,9 +1,9 @@
-import { NotFoundException, Inject } from "@nestjs/common";
+import { NotFoundException, Inject, Injectable } from "@nestjs/common";
 import { UseCase } from "../../../../../shared/use-case.interface";
 import { ProducerOutput, ProducerMapper } from "../producer.mapper";
-import { FarmInput } from "../shared-inputs.dto";
-import { ProducerRepository } from "../../../domain/ports/producer-repository";
-import { DocumentValidator } from "../../../domain/services/document-validator";
+import type { FarmInput } from "../shared-inputs.dto";
+import type { ProducerRepository } from "../../../domain/ports/producer-repository";
+import type { DocumentValidator } from "../../../domain/services/document-validator";
 import {
   PRODUCER_REPOSITORY,
   DOCUMENT_VALIDATOR,
@@ -28,6 +28,7 @@ export interface UpdateProducerInput {
 
 export type UpdateProducerOutput = ProducerOutput;
 
+@Injectable()
 export class UpdateProducerUseCase implements UseCase<
   UpdateProducerInput,
   UpdateProducerOutput
