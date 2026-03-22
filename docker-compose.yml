@@ -1,6 +1,21 @@
 version: '3.8'
 
 services:
+  api:
+    build: .
+    container_name: agro-pangolin-api
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=agropangolin
+      - PORT=3000
+
   postgres:
     image: postgres:15-alpine
     container_name: agro-pangolin-postgres
