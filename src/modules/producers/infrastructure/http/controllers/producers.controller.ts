@@ -54,9 +54,7 @@ export class ProducersController {
   @ApiCreatedResponse({ type: ProducerResponseDto })
   @ApiBadRequestResponse({ description: "Payload inválido." })
   @ApiConflictResponse({ description: "Documento já cadastrado." })
-  async create(
-    @Body() body: CreateProducerDto,
-  ): Promise<ProducerResponseDto> {
+  async create(@Body() body: CreateProducerDto): Promise<ProducerResponseDto> {
     return this.createProducerUseCase.execute(body);
   }
 

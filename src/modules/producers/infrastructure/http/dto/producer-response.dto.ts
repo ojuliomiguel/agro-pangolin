@@ -1,7 +1,10 @@
 import { ApiProperty } from "@nestjs/swagger";
 
 export class CropResponseDto {
-  @ApiProperty({ format: "uuid", example: "00000000-0000-4000-8000-000000000001" })
+  @ApiProperty({
+    format: "uuid",
+    example: "00000000-0000-4000-8000-000000000001",
+  })
   id: string;
 
   @ApiProperty({ example: "Soja" })
@@ -9,7 +12,10 @@ export class CropResponseDto {
 }
 
 export class HarvestResponseDto {
-  @ApiProperty({ format: "uuid", example: "00000000-0000-4000-8000-000000000002" })
+  @ApiProperty({
+    format: "uuid",
+    example: "00000000-0000-4000-8000-000000000002",
+  })
   id: string;
 
   @ApiProperty({ example: "2024/2025" })
@@ -20,7 +26,10 @@ export class HarvestResponseDto {
 }
 
 export class FarmResponseDto {
-  @ApiProperty({ format: "uuid", example: "00000000-0000-4000-8000-000000000003" })
+  @ApiProperty({
+    format: "uuid",
+    example: "00000000-0000-4000-8000-000000000003",
+  })
   id: string;
 
   @ApiProperty({ example: "Fazenda Boa Vista" })
@@ -46,7 +55,10 @@ export class FarmResponseDto {
 }
 
 export class ProducerResponseDto {
-  @ApiProperty({ format: "uuid", example: "00000000-0000-4000-8000-000000000004" })
+  @ApiProperty({
+    format: "uuid",
+    example: "00000000-0000-4000-8000-000000000004",
+  })
   id: string;
 
   @ApiProperty({ example: "529.982.247-25" })

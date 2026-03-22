@@ -3,15 +3,16 @@ import {
   ValidatorConstraint,
   ValidatorConstraintInterface,
 } from "class-validator";
-import { CropName, VALID_CROP_NAMES } from "../../../domain/value-objects/crop-name";
+import {
+  CropName,
+  VALID_CROP_NAMES,
+} from "../../../domain/value-objects/crop-name";
 import { Document } from "../../../domain/value-objects/document";
 import { HarvestYear } from "../../../domain/value-objects/harvest-year";
 import { StateCode } from "../../../domain/value-objects/state-code";
 
 @ValidatorConstraint({ name: "IsValidDocument", async: false })
-export class IsValidDocumentConstraint
-  implements ValidatorConstraintInterface
-{
+export class IsValidDocumentConstraint implements ValidatorConstraintInterface {
   validate(value: unknown): boolean {
     if (typeof value !== "string" || value.trim().length === 0) {
       return false;
@@ -31,9 +32,7 @@ export class IsValidDocumentConstraint
 }
 
 @ValidatorConstraint({ name: "IsValidStateCode", async: false })
-export class IsValidStateCodeConstraint
-  implements ValidatorConstraintInterface
-{
+export class IsValidStateCodeConstraint implements ValidatorConstraintInterface {
   validate(value: unknown): boolean {
     if (typeof value !== "string" || value.trim().length === 0) {
       return false;
@@ -53,9 +52,7 @@ export class IsValidStateCodeConstraint
 }
 
 @ValidatorConstraint({ name: "IsValidHarvestYear", async: false })
-export class IsValidHarvestYearConstraint
-  implements ValidatorConstraintInterface
-{
+export class IsValidHarvestYearConstraint implements ValidatorConstraintInterface {
   validate(value: unknown): boolean {
     if (typeof value !== "string" || value.trim().length === 0) {
       return false;
@@ -75,9 +72,7 @@ export class IsValidHarvestYearConstraint
 }
 
 @ValidatorConstraint({ name: "IsValidCropName", async: false })
-export class IsValidCropNameConstraint
-  implements ValidatorConstraintInterface
-{
+export class IsValidCropNameConstraint implements ValidatorConstraintInterface {
   validate(value: unknown): boolean {
     if (typeof value !== "string" || value.trim().length === 0) {
       return false;
@@ -97,9 +92,7 @@ export class IsValidCropNameConstraint
 }
 
 @ValidatorConstraint({ name: "FarmAreaConsistency", async: false })
-export class FarmAreaConsistencyConstraint
-  implements ValidatorConstraintInterface
-{
+export class FarmAreaConsistencyConstraint implements ValidatorConstraintInterface {
   validate(_value: unknown, args: ValidationArguments): boolean {
     const farm = args.object as {
       totalArea?: unknown;

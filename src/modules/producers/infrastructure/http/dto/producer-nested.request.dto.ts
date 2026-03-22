@@ -109,7 +109,11 @@ export class FarmRequestDto {
   @Min(0)
   vegetationArea: number;
 
-  @ApiProperty({ type: () => [HarvestRequestDto], required: false, default: [] })
+  @ApiProperty({
+    type: () => [HarvestRequestDto],
+    required: false,
+    default: [],
+  })
   @IsOptional()
   @IsArray()
   @ArrayMaxSize(100)

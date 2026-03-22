@@ -10,9 +10,7 @@ import {
   ValidateNested,
 } from "class-validator";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import {
-  IsValidDocumentConstraint,
-} from "./domain-value.validators";
+import { IsValidDocumentConstraint } from "./domain-value.validators";
 import { FarmRequestDto } from "./producer-nested.request.dto";
 
 export class CreateProducerDto {

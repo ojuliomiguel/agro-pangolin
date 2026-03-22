@@ -48,10 +48,6 @@ import {
       useClass: DocumentValidatorService,
     },
   ],
-  exports: [
-    PRODUCER_REPOSITORY,
-    PRODUCER_READ_REPOSITORY,
-    DOCUMENT_VALIDATOR,
-  ],
+  exports: [PRODUCER_REPOSITORY, PRODUCER_READ_REPOSITORY, DOCUMENT_VALIDATOR],
 })
 export class ProducersModule {}

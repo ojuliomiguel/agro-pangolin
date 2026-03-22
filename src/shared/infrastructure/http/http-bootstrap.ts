@@ -1,4 +1,8 @@
-import { BadRequestException, INestApplication, ValidationPipe } from "@nestjs/common";
+import {
+  BadRequestException,
+  INestApplication,
+  ValidationPipe,
+} from "@nestjs/common";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import helmet from "helmet";
 import { ValidationError } from "class-validator";
@@ -75,11 +79,17 @@ function registerSwagger(
   const httpAdapter = app.getHttpAdapter();
   const instance = httpAdapter.getInstance();
   if (typeof instance.get === "function") {
-    instance.get(`/${docsJsonPath}`, (_request: unknown, response: {
-      json: (payload: unknown) => void;
-    }) => {
-      response.json(document);
-    });
+    instance.get(
+      `/${docsJsonPath}`,
+      (
+        _request: unknown,
+        response: {
+          json: (payload: unknown) => void;
+        },
+      ) => {
+        response.json(document);
+      },
+    );
   }
 }
 
@@ -123,7 +133,9 @@ function flattenValidationErrors(
   parentPath = "",
 ): string[] {
   return errors.flatMap((error) => {
-    const path = parentPath ? `${parentPath}.${error.property}` : error.property;
+    const path = parentPath
+      ? `${parentPath}.${error.property}`
+      : error.property;
     const currentMessages = Object.values(error.constraints ?? {}).map(
       (message) => `${path}: ${message}`,
     );

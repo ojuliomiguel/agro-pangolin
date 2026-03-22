@@ -141,7 +141,9 @@ describe("API HTTP", () => {
       "529.982.247-25",
     );
     expect(mockProducerRepository.create).toHaveBeenCalledTimes(1);
-    expect(response.body).toMatchObject(ProducerMapper.toOutput(createdProducer));
+    expect(response.body).toMatchObject(
+      ProducerMapper.toOutput(createdProducer),
+    );
   });
 
   it("rejeita payload inválido antes de chegar ao use case", async () => {
@@ -171,15 +173,11 @@ describe("API HTTP", () => {
   it("retorna conflito quando o documento já existe", async () => {
     mockDocumentValidator.validate.mockReturnValue(true);
     mockProducerRepository.create.mockRejectedValue(
-      new QueryFailedError(
-        "INSERT INTO producers",
-        [],
-        {
-          code: "23505",
-          detail: 'Key (document)=(52998224725) already exists.',
-          constraint: "UQ_producers_document",
-        } as any,
-      ),
+      new QueryFailedError("INSERT INTO producers", [], {
+        code: "23505",
+        detail: "Key (document)=(52998224725) already exists.",
+        constraint: "UQ_producers_document",
+      } as any),
     );
 
     const response = await request(app.getHttpServer())
@@ -235,11 +233,15 @@ describe("API HTTP", () => {
 
     expect(mockProducerRepository.findById).toHaveBeenCalledWith(uuid(4));
     expect(mockProducerRepository.update).toHaveBeenCalledTimes(1);
-    expect(response.body).toMatchObject(ProducerMapper.toOutput(updatedProducer));
+    expect(response.body).toMatchObject(
+      ProducerMapper.toOutput(updatedProducer),
+    );
   });
 
   it("remove um produtor via DELETE /producers/:id", async () => {
-    mockProducerRepository.findById.mockResolvedValue(makeProducer({ id: uuid(5) }));
+    mockProducerRepository.findById.mockResolvedValue(
+      makeProducer({ id: uuid(5) }),
+    );
     mockProducerRepository.delete.mockResolvedValue(undefined);
 
     await request(app.getHttpServer())
