@@ -11,7 +11,7 @@ import { HarvestEntity } from "../../../../producers/infrastructure/database/typ
 const fuuid = (n: number) =>
   `00000000-0000-4000-8000-${n.toString().padStart(12, "0")}`;
 
-describe("TypeormDashboardQuery (Integration)", () => {
+describe("TypeormDashboardQuery (Integração)", () => {
   let queryAdapter: TypeormDashboardQuery;
   let dataSource: DataSource;
 

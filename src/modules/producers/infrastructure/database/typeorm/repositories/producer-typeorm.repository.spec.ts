@@ -21,7 +21,7 @@ import { DatabaseModule } from "../../../../../../shared/infrastructure/database
 const fuuid = (n: number) =>
   `00000000-0000-4000-8000-${n.toString().padStart(12, "0")}`;
 
-describe("ProducerTypeOrmRepository (Integration)", () => {
+describe("ProducerTypeOrmRepository (Integração)", () => {
   let writeRepo: ProducerTypeOrmRepository;
   let readRepo: ProducerReadTypeOrmRepository;
   let dataSource: DataSource;

@@ -1,21 +1,26 @@
-import { Controller, Get } from "@nestjs/common";
-import { ApiOkResponse, ApiOperation, ApiTags } from "@nestjs/swagger";
+import { Controller, Get, HttpCode, HttpStatus } from '@nestjs/common';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
-@ApiTags("health")
-@Controller("health")
+@ApiTags('Health')
+@Controller('health')
 export class HealthController {
   @Get()
-  @ApiOperation({ summary: "Verifica se a API está disponível" })
-  @ApiOkResponse({
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Verificação de Saúde da API' })
+  @ApiResponse({
+    status: 200,
+    description: 'API está rodando com sucesso.',
     schema: {
       example: {
-        status: "ok",
+        status: 'ok',
+        timestamp: '2024-03-22T20:00:00.000Z',
       },
     },
   })
-  getHealth(): { status: string } {
+  check() {
     return {
-      status: "ok",
+      status: 'ok',
+      timestamp: new Date().toISOString(),
     };
   }
 }
