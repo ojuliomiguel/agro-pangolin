@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { MainLayout } from '@/shared/components/MainLayout'
 import { Home } from '@/features/home/pages/Home'
+import { Dashboard } from '@/features/dashboard/pages/Dashboard'
 
 export const router = createBrowserRouter([
   {
@@ -13,7 +14,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'dashboard',
-        element: <div>Dashboard Content (Em Breve)</div>,
+        element: <Dashboard />,
       },
       {
         path: 'produtores',
