@@ -13,7 +13,6 @@ export function Home() {
       />
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {/* Dashboard Card */}
         <Card className="hover:shadow-md transition-shadow">
           <CardHeader className="pb-4">
             <div className="w-12 h-12 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 mb-2">
@@ -34,7 +33,6 @@ export function Home() {
           </CardContent>
         </Card>
 
-        {/* Produtores Card */}
         <Card className="hover:shadow-md transition-shadow">
           <CardHeader className="pb-4">
             <div className="w-12 h-12 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600 mb-2">

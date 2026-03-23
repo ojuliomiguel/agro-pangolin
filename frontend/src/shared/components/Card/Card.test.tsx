@@ -2,8 +2,8 @@ import "@testing-library/jest-dom"
 import { render, screen } from "@testing-library/react"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "./Card"
 
-describe("Card Component", () => {
-  it("deve renderizar todo o esqueleto do Card", () => {
+describe("Componente Card", () => {
+  it("deve renderizar toda a estrutura do Card", () => {
     render(
       <Card data-testid="card">
         <CardHeader>
@@ -26,7 +26,7 @@ describe("Card Component", () => {
     expect(screen.getByRole("button", { name: "Ação" })).toBeInTheDocument()
   })
 
-  it("deve repassar className extra para os componentes base", () => {
+  it("deve repassar a className extra para os componentes base", () => {
     render(<Card data-testid="card-extra" className="minha-classe-custom" />)
     expect(screen.getByTestId("card-extra")).toHaveClass("minha-classe-custom")
   })

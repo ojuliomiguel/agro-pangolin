@@ -8,7 +8,7 @@ describe("Skeleton", () => {
     expect(screen.getByTestId("skeleton")).toHaveClass("animate-pulse")
   })
 
-  it("deve aplicar classes customizadas", () => {
+  it("deve aplicar classes personalizadas", () => {
     render(<Skeleton className="w-10 h-10" />)
     expect(screen.getByTestId("skeleton")).toHaveClass("w-10 h-10")
   })

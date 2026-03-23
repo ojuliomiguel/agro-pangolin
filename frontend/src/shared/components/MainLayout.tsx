@@ -11,7 +11,6 @@ export function MainLayout() {
 
   return (
     <div className="flex h-screen bg-gray-50">
-      {/* Sidebar */}
       <aside className="w-64 bg-white border-r border-gray-200 flex flex-col">
         <div className="h-16 flex items-center px-6 border-b border-gray-200">
           <h1 className="text-xl font-bold text-emerald-700">Agro Pangolin</h1>
@@ -37,7 +36,6 @@ export function MainLayout() {
         </nav>
       </aside>
 
-      {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         <header className="h-16 bg-white border-b border-gray-200 flex items-center px-8">
         </header>

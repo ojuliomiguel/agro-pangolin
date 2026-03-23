@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { AppProvider } from './index'
 
 describe('AppProvider', () => {
-  it('renders children within Redux Provider', () => {
+  it('renderiza os filhos dentro do Provider do Redux', () => {
     render(
       <AppProvider>
         <div data-testid="child">Test Child</div>

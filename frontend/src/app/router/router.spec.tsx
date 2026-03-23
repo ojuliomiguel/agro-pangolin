@@ -4,8 +4,8 @@ import { Provider } from 'react-redux'
 import { store } from '@/app/store'
 import { router } from './index'
 
-describe('AppRouter', () => {
-  it('renders Home component on initial route', () => {
+describe('Router', () => {
+  it('renderiza o componente Home na rota inicial', () => {
     render(
       <Provider store={store}>
         <RouterProvider router={router} />

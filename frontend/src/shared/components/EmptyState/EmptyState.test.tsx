@@ -4,13 +4,13 @@ import { EmptyState } from "./EmptyState"
 import { Search } from "lucide-react"
 import { Button } from "../Button/Button"
 
-describe("EmptyState Component", () => {
-  it("deve renderizar apenas com titulo", () => {
+describe("Componente EmptyState", () => {
+  it("deve renderizar apenas com título", () => {
     render(<EmptyState title="Nenhum resultado" />)
     expect(screen.getByText("Nenhum resultado")).toBeInTheDocument()
   })
 
-  it("deve renderizar descricao e botao filhos", () => {
+  it("deve renderizar descrição e botão filhos", () => {
     render(
       <EmptyState title="Vazio" description="Sem itens aqui">
         <Button>Criar item</Button>
@@ -20,7 +20,7 @@ describe("EmptyState Component", () => {
     expect(screen.getByRole("button", { name: "Criar item" })).toBeInTheDocument()
   })
 
-  it("nao deve quebrar se passar um icone", () => {
+  it("não deve quebrar se passar um ícone", () => {
     render(<EmptyState title="Com Icon" icon={Search} />)
     expect(screen.getByTestId("empty-state")).toBeInTheDocument()
   })
