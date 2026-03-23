@@ -1,0 +1,1 @@
+export const PRODUCERS_PAGE_LIMIT = 10

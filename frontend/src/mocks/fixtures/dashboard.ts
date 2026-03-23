@@ -1,4 +1,4 @@
-import type { DashboardSummary } from '@/features/dashboard/types'
+import type { DashboardSummary } from '../../features/dashboard/types'
 
 export const dashboardFixture: DashboardSummary = {
   totalFarms: 150,

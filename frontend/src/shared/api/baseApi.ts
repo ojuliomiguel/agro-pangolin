@@ -4,5 +4,6 @@ import { getApiUrl } from './apiUrl'
 export const baseApi = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({ baseUrl: getApiUrl('/api') }),
+  tagTypes: ['Producers'],
   endpoints: () => ({}),
 })

@@ -6,7 +6,11 @@ import { BroadcastChannel, MessageChannel } from 'worker_threads'
 Object.assign(global, { TextDecoder, TextEncoder, TransformStream, ReadableStream, WritableStream, BroadcastChannel, MessageChannel })
 
 import { server } from './src/mocks/server'
+import { resetProducerFixtures } from './src/mocks/fixtures/producers'
 
 beforeAll(() => server.listen({ onUnhandledRequest: 'error' }))
-afterEach(() => server.resetHandlers())
+afterEach(() => {
+  server.resetHandlers()
+  resetProducerFixtures()
+})
 afterAll(() => server.close())
