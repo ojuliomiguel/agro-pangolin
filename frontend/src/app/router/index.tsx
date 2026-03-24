@@ -3,6 +3,7 @@ import { MainLayout } from '@/shared/components/MainLayout'
 import { Home } from '@/features/home/pages/Home'
 import { Dashboard } from '@/features/dashboard/pages/Dashboard'
 import { ProducersList } from '@/features/producers/pages/ProducersList'
+import { CreateProducer } from '@/features/producers/pages/CreateProducer'
 import { ComingSoonPage } from './ComingSoonPage'
 
 export const routeConfig: RouteObject[] = [
@@ -27,12 +28,7 @@ export const routeConfig: RouteObject[] = [
           },
           {
             path: 'novo',
-            element: (
-              <ComingSoonPage
-                title="Novo produtor"
-                description="O fluxo de cadastro será implementado na próxima etapa."
-              />
-            ),
+            element: <CreateProducer />,
           },
           {
             path: ':id',

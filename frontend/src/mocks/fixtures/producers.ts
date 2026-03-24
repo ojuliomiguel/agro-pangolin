@@ -46,10 +46,45 @@ function createInitialProducers() {
   return Array.from({ length: 12 }, (_, index) => createProducer(index + 1))
 }
 
-let producerFixtures = createInitialProducers()
+export let producerFixtures = createInitialProducers()
 
 export function resetProducerFixtures() {
   producerFixtures = createInitialProducers()
+}
+
+export function addProducerFixture(producer: Partial<ProducerSummary>): ProducerSummary {
+  const newProducer: ProducerSummary = {
+    id: `producer-${producerFixtures.length + 1}`,
+    name: producer.name || '',
+    document: producer.document || '',
+    farms: (producer.farms || []).map((farm, farmIndex) => ({
+      ...farm,
+      id: farm.id || `producer-${producerFixtures.length + 1}-farm-${farmIndex + 1}`,
+      harvests: (farm.harvests || []).map((harvest, harvestIndex) => ({
+        ...harvest,
+        id: harvest.id || `producer-${producerFixtures.length + 1}-farm-${farmIndex + 1}-harvest-${harvestIndex + 1}`,
+        crops: (harvest.crops || []).map((crop, cropIndex) => ({
+          ...crop,
+          id: crop.id || `producer-${producerFixtures.length + 1}-farm-${farmIndex + 1}-harvest-${harvestIndex + 1}-crop-${cropIndex + 1}`,
+        })),
+      })),
+    })),
+  }
+  producerFixtures.unshift(newProducer)
+  return newProducer
+}
+
+export function updateProducerFixture(id: string, updates: Partial<ProducerSummary>): ProducerSummary | null {
+  const index = producerFixtures.findIndex((p) => p.id === id)
+  if (index === -1) return null
+
+  const updated: ProducerSummary = {
+    ...producerFixtures[index],
+    ...updates,
+    id, // Ensure ID doesn't change
+  }
+  producerFixtures[index] = updated
+  return updated
 }
 
 export function removeProducerFixture(id: string) {

@@ -27,6 +27,38 @@ export interface ProducerSummary {
   farms: FarmSummary[]
 }
 
+export interface CropRequest {
+  id?: string
+  name: string
+}
+
+export interface HarvestRequest {
+  id?: string
+  year: string
+  crops?: CropRequest[]
+}
+
+export interface FarmRequest {
+  id?: string
+  name: string
+  city: string
+  state: string
+  totalArea: number
+  agriculturalArea: number
+  vegetationArea: number
+  harvests?: HarvestRequest[]
+}
+
+export interface CreateProducerRequest {
+  document: string
+  name: string
+  farms?: FarmRequest[]
+}
+
+export interface UpdateProducerRequest extends Partial<CreateProducerRequest> {
+  id: string
+}
+
 export interface ProducersListResponse {
   data: ProducerSummary[]
   total: number

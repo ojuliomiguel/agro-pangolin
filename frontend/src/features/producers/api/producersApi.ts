@@ -1,5 +1,11 @@
 import { baseApi } from '@/shared/api/baseApi'
-import type { ProducersListQuery, ProducersListResponse } from '../types'
+import type {
+  ProducersListQuery,
+  ProducersListResponse,
+  ProducerSummary,
+  CreateProducerRequest,
+  UpdateProducerRequest,
+} from '../types'
 
 export const producersApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -19,6 +25,29 @@ export const producersApi = baseApi.injectEndpoints({
         ]
       },
     }),
+    getProducer: builder.query<ProducerSummary, string>({
+      query: (id) => `/producers/${id}`,
+      providesTags: (_result, _error, id) => [{ type: 'Producers', id }],
+    }),
+    createProducer: builder.mutation<ProducerSummary, CreateProducerRequest>({
+      query: (body) => ({
+        url: '/producers',
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: [{ type: 'Producers', id: 'LIST' }],
+    }),
+    updateProducer: builder.mutation<ProducerSummary, UpdateProducerRequest>({
+      query: ({ id, ...body }) => ({
+        url: `/producers/${id}`,
+        method: 'PATCH',
+        body,
+      }),
+      invalidatesTags: (_result, _error, { id }) => [
+        { type: 'Producers', id },
+        { type: 'Producers', id: 'LIST' },
+      ],
+    }),
     deleteProducer: builder.mutation<void, string>({
       query: (id) => ({
         url: `/producers/${id}`,
@@ -32,4 +61,10 @@ export const producersApi = baseApi.injectEndpoints({
   }),
 })
 
-export const { useGetProducersQuery, useDeleteProducerMutation } = producersApi
+export const {
+  useGetProducersQuery,
+  useGetProducerQuery,
+  useCreateProducerMutation,
+  useUpdateProducerMutation,
+  useDeleteProducerMutation,
+} = producersApi
