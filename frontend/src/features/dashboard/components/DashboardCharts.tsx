@@ -53,25 +53,46 @@ export function DashboardCharts({ byState, byCrop, bySoilUse }: DashboardChartsP
         </CardHeader>
         <CardContent>
           <div className="h-[250px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={byCrop}
-                  dataKey="count"
-                  nameKey="crop"
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={80}
-                  label={({ name, value }) => `${name}: ${value}`}
+            {byCrop.length === 0 ? (
+              <div className="flex h-full flex-col items-center justify-center gap-2 text-muted-foreground">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-10 w-10 opacity-30"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={1.5}
                 >
-                  {byCrop.map((_, index) => (
-                    <Cell key={`crop-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
-                </Pie>
-                <Tooltip />
-                <Legend />
-              </PieChart>
-            </ResponsiveContainer>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3.75 10.5a8.25 8.25 0 1116.5 0M12 3v1.5M12 19.5V21M4.22 4.22l1.06 1.06M18.72 5.28l-1.06 1.06M3 10.5H1.5M22.5 10.5H21"
+                  />
+                </svg>
+                <p className="text-sm font-medium">Nenhuma cultura cadastrada</p>
+                <p className="text-xs">Adicione culturas às safras para visualizar a distribuição.</p>
+              </div>
+            ) : (
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={byCrop}
+                    dataKey="count"
+                    nameKey="crop"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={80}
+                    label={({ name, value }) => `${name}: ${value}`}
+                  >
+                    {byCrop.map((_, index) => (
+                      <Cell key={`crop-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                  <Legend />
+                </PieChart>
+              </ResponsiveContainer>
+            )}
           </div>
         </CardContent>
       </Card>
