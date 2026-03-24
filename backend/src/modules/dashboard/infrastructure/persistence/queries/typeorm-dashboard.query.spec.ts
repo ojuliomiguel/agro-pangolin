@@ -50,7 +50,7 @@ describe("TypeormDashboardQuery (Integração)", () => {
 
     await producerRepo.save({
       id: fuuid(1),
-      document: "11111111111",
+      document: "52998224725",
       name: "Produtor 1",
       farms: [
         {

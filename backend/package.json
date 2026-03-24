@@ -20,12 +20,12 @@
     "test:cov": "yarn pretest && dotenv -e .env.test -- jest --coverage",
     "test:debug": "dotenv -e .env.test -- node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "dotenv -e .env.test -- jest --config ./test/jest-e2e.json",
-    "typeorm": "typeorm-ts-node-commonjs",
+    "typeorm": "node scripts/typeorm-runner.js",
     "migration:create": "yarn typeorm migration:create",
-    "migration:generate": "yarn typeorm migration:generate -d src/shared/infrastructure/database/data-source.ts",
-    "migration:run": "yarn typeorm migration:run -d src/shared/infrastructure/database/data-source.ts",
-    "migration:run:test": "NODE_ENV=test yarn typeorm migration:run -d src/shared/infrastructure/database/data-source.ts",
-    "migration:revert": "yarn typeorm migration:revert -d src/shared/infrastructure/database/data-source.ts",
+    "migration:generate": "yarn typeorm migration:generate",
+    "migration:run": "yarn typeorm migration:run",
+    "migration:run:test": "NODE_ENV=test yarn typeorm migration:run",
+    "migration:revert": "yarn typeorm migration:revert",
     "seed": "ts-node src/shared/infrastructure/database/seed.ts"
   },
   "dependencies": {
