@@ -25,7 +25,7 @@ describe('Página do Dashboard', () => {
 
   it('renderiza o estado de erro e permite tentar novamente', async () => {
     server.use(
-      http.get(getApiUrl('/api/dashboard'), () => {
+      http.get(getApiUrl('/dashboard'), () => {
         return HttpResponse.json({ message: 'boom' }, { status: 500 })
       })
     )
@@ -40,7 +40,7 @@ describe('Página do Dashboard', () => {
 
   it('renderiza o estado vazio quando o dashboard não possui fazendas', async () => {
     server.use(
-      http.get(getApiUrl('/api/dashboard'), () => {
+      http.get(getApiUrl('/dashboard'), () => {
         return HttpResponse.json(dashboardEmptyFixture)
       })
     )

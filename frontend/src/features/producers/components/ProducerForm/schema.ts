@@ -64,9 +64,9 @@ export const producerFormSchema = z.object({
     name: z.string().min(2, 'O nome da fazenda deve ter pelo menos 2 caracteres'),
     city: z.string().min(2, 'A cidade deve ter pelo menos 2 caracteres'),
     state: z.string().length(2, 'Selecione um estado'),
-    totalArea: z.number({ invalid_type_error: 'Informe a área total' }).min(0.1, 'A área deve ser maior que 0'),
-    agriculturalArea: z.number({ invalid_type_error: 'Informe a área agricultável' }).min(0, 'A área não pode ser negativa'),
-    vegetationArea: z.number({ invalid_type_error: 'Informe a área de vegetação' }).min(0, 'A área não pode ser negativa'),
+    totalArea: z.number({ error: 'Informe a área total' }).min(0.1, 'A área deve ser maior que 0'),
+    agriculturalArea: z.number({ error: 'Informe a área agricultável' }).min(0, 'A área não pode ser negativa'),
+    vegetationArea: z.number({ error: 'Informe a área de vegetação' }).min(0, 'A área não pode ser negativa'),
     harvests: z.array(z.object({
       id: z.string().optional(),
       year: z.string().regex(/^\d{4}(\/\d{4})?$/, 'Formato de safra inválido (ex: 2024 ou 2024/2025)'),

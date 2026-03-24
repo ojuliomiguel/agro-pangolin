@@ -98,7 +98,7 @@ describe('Página de listagem de produtores', () => {
 
   it('renderiza o empty state quando não há produtores', async () => {
     server.use(
-      http.get(getApiUrl('/api/producers'), () => {
+      http.get(getApiUrl('/producers'), () => {
         return HttpResponse.json(producerListEmptyFixture)
       })
     )
@@ -134,7 +134,7 @@ describe('Página de listagem de produtores', () => {
   it('exibe banner de erro quando a exclusão falha', async () => {
     jest.spyOn(window, 'confirm').mockReturnValueOnce(true)
     server.use(
-      http.delete(getApiUrl('/api/producers/:id'), () => {
+      http.delete(getApiUrl('/producers/:id'), () => {
         return HttpResponse.json({ message: 'Erro interno' }, { status: 500 })
       })
     )
@@ -167,7 +167,7 @@ describe('Página de listagem de produtores', () => {
       resolveDelete = resolve
     })
     server.use(
-      http.delete(getApiUrl('/api/producers/:id'), async ({ params }) => {
+      http.delete(getApiUrl('/producers/:id'), async ({ params }) => {
         await pendingDelete
         removeProducerFixture(String(params.id))
         return new HttpResponse(null, { status: 204 })

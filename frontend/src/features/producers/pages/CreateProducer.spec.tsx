@@ -96,7 +96,7 @@ describe('CreateProducer', () => {
 
   it('shows submit error when API returns error', async () => {
     server.use(
-      http.post(getApiUrl('/api/producers'), () =>
+      http.post(getApiUrl('/producers'), () =>
         HttpResponse.json({ message: 'Documento já cadastrado' }, { status: 409 })
       )
     )

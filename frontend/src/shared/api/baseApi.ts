@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { getApiUrl } from './apiUrl'
+import { getApiOrigin } from './apiUrl'
 
 export const baseApi = createApi({
   reducerPath: 'api',
-  baseQuery: fetchBaseQuery({ baseUrl: getApiUrl('/api') }),
+  baseQuery: fetchBaseQuery({ baseUrl: getApiOrigin() }),
   tagTypes: ['Producers'],
   endpoints: () => ({}),
 })

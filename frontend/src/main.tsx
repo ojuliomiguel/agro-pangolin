@@ -3,10 +3,11 @@ import { createRoot } from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'
 import { AppProvider } from '@/app/providers'
 import { router } from '@/app/router'
+import { shouldEnableMocks } from '@/shared/config/runtime'
 import './index.css'
 
 async function enableMocks() {
-  if (import.meta.env.DEV) {
+  if (shouldEnableMocks(import.meta.env)) {
     const { worker } = await import('@/mocks/browser')
     await worker.start({ onUnhandledRequest: 'error' })
   }

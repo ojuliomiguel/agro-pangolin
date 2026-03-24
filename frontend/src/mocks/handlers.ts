@@ -10,20 +10,20 @@ import {
 import { getApiUrl } from '../shared/api/apiUrl'
 
 export const handlers = [
-  http.get(getApiUrl('/api/health'), () => {
+  http.get(getApiUrl('/health'), () => {
     return HttpResponse.json({ status: 'ok' })
   }),
-  http.get(getApiUrl('/api/dashboard'), () => {
+  http.get(getApiUrl('/dashboard'), () => {
     return HttpResponse.json(dashboardFixture)
   }),
-  http.get(getApiUrl('/api/producers'), ({ request }) => {
+  http.get(getApiUrl('/producers'), ({ request }) => {
     const url = new URL(request.url)
     const page = Number(url.searchParams.get('page') ?? '1')
     const limit = Number(url.searchParams.get('limit') ?? '10')
 
     return HttpResponse.json(getProducersPage(page, limit))
   }),
-  http.get(getApiUrl('/api/producers/:id'), ({ params }) => {
+  http.get(getApiUrl('/producers/:id'), ({ params }) => {
     const producer = producerFixtures.find((p) => p.id === String(params.id))
 
     if (!producer) {
@@ -35,12 +35,12 @@ export const handlers = [
 
     return HttpResponse.json(producer)
   }),
-  http.post(getApiUrl('/api/producers'), async ({ request }) => {
+  http.post(getApiUrl('/producers'), async ({ request }) => {
     const body = (await request.json()) as any
     const newProducer = addProducerFixture(body)
     return HttpResponse.json(newProducer, { status: 201 })
   }),
-  http.patch(getApiUrl('/api/producers/:id'), async ({ params, request }) => {
+  http.patch(getApiUrl('/producers/:id'), async ({ params, request }) => {
     const body = (await request.json()) as any
     const updated = updateProducerFixture(String(params.id), body)
 
@@ -53,7 +53,7 @@ export const handlers = [
 
     return HttpResponse.json(updated)
   }),
-  http.delete(getApiUrl('/api/producers/:id'), ({ params }) => {
+  http.delete(getApiUrl('/producers/:id'), ({ params }) => {
     const removed = removeProducerFixture(String(params.id))
 
     if (!removed) {
