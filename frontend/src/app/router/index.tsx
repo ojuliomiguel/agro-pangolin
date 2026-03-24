@@ -4,6 +4,7 @@ import { Home } from '@/features/home/pages/Home'
 import { Dashboard } from '@/features/dashboard/pages/Dashboard'
 import { ProducersList } from '@/features/producers/pages/ProducersList'
 import { CreateProducer } from '@/features/producers/pages/CreateProducer'
+import { ProducerDetail } from '@/features/producers/pages/ProducerDetail'
 import { ComingSoonPage } from './ComingSoonPage'
 
 export const routeConfig: RouteObject[] = [
@@ -32,12 +33,7 @@ export const routeConfig: RouteObject[] = [
           },
           {
             path: ':id',
-            element: (
-              <ComingSoonPage
-                title="Detalhe do produtor"
-                description="A visualização detalhada do cadastro vem na etapa 5."
-              />
-            ),
+            element: <ProducerDetail />,
           },
           {
             path: ':id/editar',
