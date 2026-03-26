@@ -5,7 +5,7 @@ import { Dashboard } from '@/features/dashboard/pages/Dashboard'
 import { ProducersList } from '@/features/producers/pages/ProducersList'
 import { CreateProducer } from '@/features/producers/pages/CreateProducer'
 import { ProducerDetail } from '@/features/producers/pages/ProducerDetail'
-import { ComingSoonPage } from './ComingSoonPage'
+import { EditProducer } from '@/features/producers/pages/EditProducer'
 
 export const routeConfig: RouteObject[] = [
   {
@@ -37,12 +37,7 @@ export const routeConfig: RouteObject[] = [
           },
           {
             path: ':id/editar',
-            element: (
-              <ComingSoonPage
-                title="Editar produtor"
-                description="A edição do cadastro vem na etapa 6."
-              />
-            ),
+            element: <EditProducer />,
           },
         ]
       },

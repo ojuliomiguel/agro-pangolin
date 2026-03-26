@@ -73,7 +73,7 @@ describe('Página de listagem de produtores', () => {
     fireEvent.click(within(row).getByRole('link', { name: 'Ver detalhe de Produtor 01' }))
 
     await waitFor(() => {
-      expect(screen.getByRole('heading', { name: 'Detalhe do produtor' })).toBeInTheDocument()
+      expect(screen.getByRole('heading', { name: 'Produtor 01' })).toBeInTheDocument()
     })
   })
 
@@ -92,7 +92,7 @@ describe('Página de listagem de produtores', () => {
     fireEvent.click(within(row).getByRole('link', { name: 'Editar Produtor 01' }))
 
     await waitFor(() => {
-      expect(screen.getByRole('heading', { name: 'Editar produtor' })).toBeInTheDocument()
+      expect(screen.getByRole('heading', { name: 'Editar Produtor' })).toBeInTheDocument()
     })
   })
 
