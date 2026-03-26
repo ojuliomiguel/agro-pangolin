@@ -15,26 +15,6 @@ export function Home() {
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <Card className="hover:shadow-md transition-shadow">
           <CardHeader className="pb-4">
-            <div className="w-12 h-12 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 mb-2">
-              <LayoutDashboard className="w-6 h-6" />
-            </div>
-            <CardTitle className="text-lg text-slate-900 dark:text-slate-50">Visão Analítica</CardTitle>
-            <CardDescription className="mt-1">
-              Consulte indicadores consolidados sobre fazendas, culturas e uso de solo.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Link
-              to="/dashboard"
-              className="text-sm font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-500 dark:hover:text-emerald-400"
-            >
-              Ver dashboard &rarr;
-            </Link>
-          </CardContent>
-        </Card>
-
-        <Card className="hover:shadow-md transition-shadow">
-          <CardHeader className="pb-4">
             <div className="w-12 h-12 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600 mb-2">
               <Users className="w-6 h-6" />
             </div>
@@ -49,6 +29,26 @@ export function Home() {
               className="text-sm font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-500 dark:hover:text-emerald-400"
             >
               Gerenciar produtores &rarr;
+            </Link>
+          </CardContent>
+        </Card>
+
+        <Card className="hover:shadow-md transition-shadow">
+          <CardHeader className="pb-4">
+            <div className="w-12 h-12 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 mb-2">
+              <LayoutDashboard className="w-6 h-6" />
+            </div>
+            <CardTitle className="text-lg text-slate-900 dark:text-slate-50">Visão Analítica</CardTitle>
+            <CardDescription className="mt-1">
+              Consulte indicadores consolidados sobre fazendas, culturas e uso de solo.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Link
+              to="/dashboard"
+              className="text-sm font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-500 dark:hover:text-emerald-400"
+            >
+              Ver dashboard &rarr;
             </Link>
           </CardContent>
         </Card>

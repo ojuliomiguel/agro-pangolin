@@ -5,8 +5,8 @@ import { clsx } from 'clsx'
 
 const navItems = [
   { to: '/', end: true, icon: HomeIcon, label: 'Home' },
-  { to: '/dashboard', end: false, icon: LayoutDashboard, label: 'Dashboard' },
   { to: '/produtores', end: false, icon: Users, label: 'Produtores' },
+  { to: '/dashboard', end: false, icon: LayoutDashboard, label: 'Dashboard' },
 ]
 
 function navLinkClass({ isActive }: { isActive: boolean }) {
