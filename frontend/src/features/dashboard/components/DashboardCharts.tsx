@@ -23,7 +23,7 @@ export function DashboardCharts({ byState, byCrop, bySoilUse }: DashboardChartsP
           <CardTitle>Distribuição por Estado</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="h-[250px]">
+          <div className="h-[320px]">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
@@ -31,9 +31,10 @@ export function DashboardCharts({ byState, byCrop, bySoilUse }: DashboardChartsP
                   dataKey="count"
                   nameKey="state"
                   cx="50%"
-                  cy="50%"
-                  outerRadius={80}
-                  label={({ name, value }) => `${name}: ${value}`}
+                  cy="45%"
+                  outerRadius={75}
+                  label={({ percent }) => `${(percent * 100).toFixed(1)}%`}
+                  labelLine={false}
                 >
                   {byState.map((_, index) => (
                     <Cell key={`state-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -52,7 +53,7 @@ export function DashboardCharts({ byState, byCrop, bySoilUse }: DashboardChartsP
           <CardTitle>Distribuição por Cultura</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="h-[250px]">
+          <div className="h-[320px]">
             {byCrop.length === 0 ? (
               <div className="flex h-full flex-col items-center justify-center gap-2 text-muted-foreground">
                 <svg
@@ -80,9 +81,10 @@ export function DashboardCharts({ byState, byCrop, bySoilUse }: DashboardChartsP
                     dataKey="count"
                     nameKey="crop"
                     cx="50%"
-                    cy="50%"
-                    outerRadius={80}
-                    label={({ name, value }) => `${name}: ${value}`}
+                    cy="45%"
+                    outerRadius={75}
+                    label={({ percent }) => `${(percent * 100).toFixed(1)}%`}
+                    labelLine={false}
                   >
                     {byCrop.map((_, index) => (
                       <Cell key={`crop-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -102,7 +104,7 @@ export function DashboardCharts({ byState, byCrop, bySoilUse }: DashboardChartsP
           <CardTitle>Uso do Solo</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="h-[250px]">
+          <div className="h-[320px]">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
@@ -110,9 +112,10 @@ export function DashboardCharts({ byState, byCrop, bySoilUse }: DashboardChartsP
                   dataKey="value"
                   nameKey="name"
                   cx="50%"
-                  cy="50%"
-                  outerRadius={80}
-                  label={({ name, value }) => `${name}: ${value.toLocaleString()} ha`}
+                  cy="45%"
+                  outerRadius={75}
+                  label={({ percent }) => `${(percent * 100).toFixed(1)}%`}
+                  labelLine={false}
                 >
                   <Cell fill="#22c55e" />
                   <Cell fill="#0ea5e9" />
