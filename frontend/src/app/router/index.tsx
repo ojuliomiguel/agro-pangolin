@@ -6,6 +6,7 @@ import { ProducersList } from '@/features/producers/pages/ProducersList'
 import { CreateProducer } from '@/features/producers/pages/CreateProducer'
 import { ProducerDetail } from '@/features/producers/pages/ProducerDetail'
 import { EditProducer } from '@/features/producers/pages/EditProducer'
+import { NotFoundPage } from './NotFoundPage'
 
 export const routeConfig: RouteObject[] = [
   {
@@ -40,6 +41,10 @@ export const routeConfig: RouteObject[] = [
             element: <EditProducer />,
           },
         ]
+      },
+      {
+        path: '*',
+        element: <NotFoundPage />,
       },
     ],
   },

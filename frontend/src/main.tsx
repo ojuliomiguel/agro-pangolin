@@ -4,6 +4,7 @@ import { RouterProvider } from 'react-router-dom'
 import { AppProvider } from '@/app/providers'
 import { router } from '@/app/router'
 import { shouldEnableMocks } from '@/shared/config/runtime'
+import { ErrorBoundary } from '@/shared/components/ErrorBoundary'
 import './index.css'
 
 async function enableMocks() {
@@ -18,9 +19,11 @@ async function bootstrap() {
 
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
-      <AppProvider>
-        <RouterProvider router={router} />
-      </AppProvider>
+      <ErrorBoundary>
+        <AppProvider>
+          <RouterProvider router={router} />
+        </AppProvider>
+      </ErrorBoundary>
     </StrictMode>,
   )
 }
