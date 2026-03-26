@@ -5,7 +5,7 @@ describe('Página inicial', () => {
   it('renderiza o título principal da aplicação e a descrição', () => {
     render(<Home />)
     expect(screen.getByText('Agro Pangolin')).toBeInTheDocument()
-    expect(screen.getByText(/Sistema de gestão/i)).toBeInTheDocument()
+    expect(screen.getByText(/Gestão de produtores rurais/i)).toBeInTheDocument()
   })
 
   it('renderiza os cards de navegação', () => {

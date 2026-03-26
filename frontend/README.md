@@ -1,69 +1,97 @@
-# React + TypeScript + Vite
+# Agro Pangolin — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interface web do sistema de gestão de produtores rurais.
 
-Currently, two official plugins are available:
+## Tecnologias
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 19 + TypeScript (strict)
+- Vite 7
+- Tailwind CSS v4
+- Redux Toolkit + RTK Query
+- React Router 7
+- React Hook Form + Zod
+- Recharts
+- Jest + React Testing Library + MSW
 
-## Expanding the ESLint configuration
+## Pré-requisitos
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js 20+
+- Backend rodando em `http://localhost:3000` (veja `../backend`)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Instalação
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd frontend
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Desenvolvimento
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+O frontend resolve a API em `http://localhost:3000` por padrão. Os mocks com MSW ficam desligados em desenvolvimento. Para ativá-los:
+
+```bash
+VITE_ENABLE_MSW=true npm run dev
+```
+
+## Testes
+
+```bash
+npm test
+```
+
+Para rodar em modo watch:
+
+```bash
+npm run test -- --watch
+```
+
+Os testes usam Jest + React Testing Library + MSW. O MSW é configurado automaticamente no `jest.setup.ts`.
+
+## Build
+
+```bash
+npm run build
+```
+
+## Estrutura
+
+```
+src/
+  app/
+    providers/   — Redux Provider
+    router/      — Rotas e configuração
+    store/       — Redux store
+  features/
+    dashboard/   — Tela analítica
+    home/        — Tela inicial
+    producers/   — CRUD de produtores
+  shared/
+    api/         — Cliente HTTP (RTK Query base)
+    components/  — Componentes reutilizáveis
+    test/        — Utilitários de teste
+    utils/       — cn e outros helpers
+  mocks/
+    handlers/    — Handlers MSW
+    fixtures/    — Dados de teste
+```
+
+## Variáveis de ambiente
+
+| Variável | Padrão | Descrição |
+|---|---|---|
+| `VITE_ENABLE_MSW` | `false` | Ativa os mocks MSW em desenvolvimento |
+
+## Rotas disponíveis
+
+| Rota | Tela |
+|---|---|
+| `/` | Home |
+| `/dashboard` | Dashboard analítico |
+| `/produtores` | Lista de produtores |
+| `/produtores/novo` | Cadastro de produtor |
+| `/produtores/:id` | Detalhe do produtor |
+| `/produtores/:id/editar` | Edição de produtor |
